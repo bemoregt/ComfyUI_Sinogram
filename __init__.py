@@ -89,8 +89,10 @@ class Image2Sinogram:
             sinogram = sinogram / 255.0
             sinogram = np.clip(sinogram, 0, 1)
 
-        # (H_sino, W_sino) → (1, H_sino, W_sino, 1) tensor
-        sino_tensor = torch.from_numpy(sinogram.astype(np.float32)).unsqueeze(0).unsqueeze(-1)
+        # (H_sino, W_sino) → (1, H_sino, W_sino, 3) tensor (ComfyUI IMAGE는 RGB 3채널 필요)
+        sino_f32 = sinogram.astype(np.float32)
+        sino_rgb = np.stack([sino_f32, sino_f32, sino_f32], axis=-1)  # 그레이 → RGB
+        sino_tensor = torch.from_numpy(sino_rgb).unsqueeze(0)
 
         return (sino_tensor,)
 
