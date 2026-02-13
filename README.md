@@ -2,6 +2,8 @@
 
 A ComfyUI custom node that generates a **sinogram** from an input image using the **Radon transform** — the mathematical foundation of CT (computed tomography) imaging.
 
+![이미지 스펙트럼 예시](https://github.com/bemoregt/ComfyUI_Sinogram/blob/main/ScrShot%2017.png)
+
 ## Overview
 
 The Radon transform projects an image along a set of angles, producing a 2D sinogram where each column represents one projection angle. This node makes it easy to visualize and experiment with sinogram generation directly inside ComfyUI workflows.
